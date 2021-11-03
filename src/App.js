@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Item from "./components/Item";
 import Search from "./components/Search";
 import NotFound from "./components/NotFound";
+import Rank from './components/Rank'
 
 class App extends Component {
   // Prevent page reload, clear input, set URL and push history on submit
@@ -12,6 +13,13 @@ class App extends Component {
     e.preventDefault();
     e.currentTarget.reset();
     let url = `/search/${searchInput}`;
+    history.push(url);
+  };
+
+  handleSubmit2 = (e, history, searchInput) => {
+    e.preventDefault();
+    e.currentTarget.reset();
+    let url = `/rank/${searchInput}`;
     history.push(url);
   };
 
@@ -24,6 +32,7 @@ class App extends Component {
               render={props => (
                 <Header
                   handleSubmit={this.handleSubmit}
+                  handleSubmit2={this.handleSubmit2}
                   history={props.history}
                 />
               )}
@@ -46,6 +55,12 @@ class App extends Component {
                 path="/search/:searchInput"
                 render={props => (
                   <Search searchTerm={props.match.params.searchInput} />
+                )}
+              />
+              <Route
+                path="/rank/:searchInput"
+                render={props => (
+                  <Rank searchTerm={props.match.params.searchInput} />
                 )}
               />
               <Route component={NotFound} />

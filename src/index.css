@@ -79,12 +79,22 @@ a {
   margin: 0 auto 32px;
 }
 
-.search-form button {
+.search-button {
   outline: none;
   border: none;
   padding: 0px 15px;
   border-radius: 0 0.35em 0.35em 0;
   cursor: pointer;
+}
+
+.new-button {
+  outline: none;
+  border: none;
+  padding: 0px 15px;
+  border-radius: 0.35em;
+  cursor: pointer;
+  margin-left: 10px;
+  color: white;
 }
 
 .active {

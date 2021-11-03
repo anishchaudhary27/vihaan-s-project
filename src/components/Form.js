@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Form = ({ handleSubmit, history }) => {
+const Form = ({ handleSubmit, history, handleSubmit2 }) => {
   const [searchEntry, setSearchEntry] = useState("");
   // update search text state
   const updateSearchInput = e => {
@@ -9,7 +9,7 @@ const Form = ({ handleSubmit, history }) => {
   return (
     <form
       className="search-form"
-      onSubmit={e => handleSubmit(e, history, searchEntry)}
+      onSubmit={e => handleSubmit2(e, history, searchEntry)}
     >
       <input
         type="text"
@@ -18,7 +18,7 @@ const Form = ({ handleSubmit, history }) => {
         onChange={updateSearchInput}
         value={searchEntry}
       />
-      <button
+      {/* <button
         type="submit"
         className={`search-button ${searchEntry.trim() ? "active" : null}`}
         disabled={!searchEntry.trim()}
@@ -30,6 +30,12 @@ const Form = ({ handleSubmit, history }) => {
             fillRule="evenodd"
           />
         </svg>
+      </button> */}
+      <button
+        type="submit"
+        className={`new-button ${searchEntry.trim() ? "active" : null}`}
+        disabled={!searchEntry.trim()}>
+        Rank Images
       </button>
     </form>
   );
