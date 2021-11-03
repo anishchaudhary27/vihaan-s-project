@@ -18,7 +18,9 @@ const Rank = ({ searchTerm }) => {
                 })
                 setimages(t)
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                setimages([<NoImages/>])
+            })
             .finally(_ => {
                 setLoading(false)
             })
@@ -35,7 +37,6 @@ const Rank = ({ searchTerm }) => {
                     !loading &&
                     <div>
                         <ul>{images}</ul>
-                        <NoImages />
                     </div>
                 }
             </div>
