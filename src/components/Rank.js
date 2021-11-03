@@ -9,12 +9,10 @@ const Rank = ({ searchTerm }) => {
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         //do axios fetch
+        console.log(searchTerm)
         axios.get('http://localhost:5000/rank/' + searchTerm)
-            .then(res => {
-                return JSON.parse(res.data)
-            })
             .then(val => {
-                const urls = val.urls
+                const urls = val.data.urls
                 let t = []
                 if (urls !== []) {
                     t = urls.map((url, i) => {
@@ -22,12 +20,12 @@ const Rank = ({ searchTerm }) => {
                     })
                 }
                 else {
-                    t = [<NoImages />]
+                    t = [<NoImages key={0}/>]
                 }
                 setimages(t)
             })
             .catch(err => {
-                setimages([<p>Error ranking images!!</p>])
+                setimages([<p key={0}>Error ranking images!!</p>])
             })
             .finally(_ => {
                 setLoading(false)
