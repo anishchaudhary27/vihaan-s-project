@@ -13,14 +13,20 @@ const Rank = ({ searchTerm }) => {
         axios.get('http://localhost:5000/rank/' + searchTerm)
             .then(val => {
                 const urls = val.data.urls
+                const scores = val.data.scores
                 let t = []
                 if (urls !== []) {
                     t = urls.map((url, i) => {
-                        return <Image url={url} key={i} alt={"image" + i} />
+                        return (
+                            <div key={i}>
+                                <Image url={url} alt={"image" + i} />
+                                <p>{scores[i]}</p>
+                            </div>
+                        )
                     })
                 }
                 else {
-                    t = [<NoImages key={0}/>]
+                    t = [<NoImages key={0} />]
                 }
                 setimages(t)
             })
